@@ -1,7 +1,13 @@
-import "./assets/App.css";
+import FormikForm from '@components/FormikForm'
+import { FC } from 'react'
 
-function App() {
-  return <div className="App"></div>;
+const App:FC = () => {
+  return (
+    <>
+    <FormikForm/>
+    </>
+  )
+
 }
 
-export default App;
+export default App
