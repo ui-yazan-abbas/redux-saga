@@ -5,7 +5,13 @@
            "@components/*" : ["./components/*"],
            "@assets/*" : ["./assets/*"],
            "@utils/*" : ["./utils/*"],
+<<<<<<< HEAD
+           "@store/*" : ["./store/*"],
+           "@types/*" : ["./types/*"],
+           "@sagas/*" : ["./sagas/*"],
+=======
            "@store/*" : ["./store/*"]
+>>>>>>> main
          }
     }
 }
