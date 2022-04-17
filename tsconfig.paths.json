@@ -5,7 +5,9 @@
            "@components/*" : ["./components/*"],
            "@assets/*" : ["./assets/*"],
            "@utils/*" : ["./utils/*"],
-           "@store/*" : ["./store/*"]
+           "@store/*" : ["./store/*"],
+           "@types/*" : ["./types/*"],
+           "@sagas/*" : ["./sagas/*"],
          }
     }
 }

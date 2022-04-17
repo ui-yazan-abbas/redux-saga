@@ -1,0 +1,4 @@
+export enum ActionTypes {
+  GET_USERS_FETCH = "GET_USER_FETCH",
+  GET_USERS_SUCCESS = "GET_USERS_SUCCESS",
+}
