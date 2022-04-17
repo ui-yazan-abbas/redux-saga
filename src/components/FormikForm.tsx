@@ -3,6 +3,9 @@ import { Formik, Form, ErrorMessage, Field } from "formik";
 import * as Yup from "yup";
 import styled from "@emotion/styled";
 import { FormProps } from "../types";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers, logIn } from "../store/action";
+import { selectIsLoggedIn } from "../store/selectors";
 
 const StyledFlex = styled("div")`
   display: flex;
@@ -46,23 +49,33 @@ const StyledError = styled(ErrorMessage)`
   color: red;
   font-size: smaller;
 `;
+const initialValues = {
+  email: "",
+  password: "",
+};
+
+const validationSchema = Yup.object({
+  email: Yup.string().email().required("Required Field"),
+  password: Yup.string()
+    .required("No password provided.")
+    .min(8, "Password is too short - should be 8 chars minimum.")
+    .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
+});
 
 const FormikForm: FC = () => {
-  const initialValues = {
-    email: "",
-    password: "",
-  };
-  const validationSchema = Yup.object({
-    email: Yup.string().email().required("Required Field"),
-    password: Yup.string()
-      .required("No password provided.")
-      .min(8, "Password is too short - should be 8 chars minimum.")
-      .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
-  });
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  const handleSubmit = useCallback((values: FormProps) => {
-    console.log(values);
-  }, []);
+  console.log("Logged In", isLoggedIn);
+  const handleSubmit = useCallback(
+    (values: FormProps, { resetForm }: any) => {
+      resetForm();
+      dispatch(logIn());
+      dispatch(getUsers());
+    },
+    [dispatch]
+  );
+
   return (
     <Formik
       initialValues={initialValues}
