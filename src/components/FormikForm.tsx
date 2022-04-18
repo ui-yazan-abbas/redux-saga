@@ -66,38 +66,42 @@ const FormikForm: FC = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  console.log("Logged In", isLoggedIn);
   const handleSubmit = useCallback(
     (values: FormProps, { resetForm }: any) => {
       resetForm();
       dispatch(logIn());
-      dispatch(getUsers());
     },
     [dispatch]
   );
 
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={handleSubmit}
-    >
-      <Form>
-        <StyledFlex>
-          <SettingGridContent>
-            <StyledLabel htmlFor="email"> Email: </StyledLabel>
-            <StyledField name="email" />
-            <StyledError name="email" component="div" />
-          </SettingGridContent>
-          <SettingGridContent>
-            <StyledLabel htmlFor="password"> Password: </StyledLabel>
-            <StyledField name="password" />
-            <StyledError name="password" component="div" />
-          </SettingGridContent>
-          <StyledButton type="submit">Submit</StyledButton>
-        </StyledFlex>
-      </Form>
-    </Formik>
+    <>
+      {isLoggedIn ? (
+        <h2>You're Here</h2>
+      ) : (
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          <Form>
+            <StyledFlex>
+              <SettingGridContent>
+                <StyledLabel htmlFor="email"> Email: </StyledLabel>
+                <StyledField name="email" />
+                <StyledError name="email" component="div" />
+              </SettingGridContent>
+              <SettingGridContent>
+                <StyledLabel htmlFor="password"> Password: </StyledLabel>
+                <StyledField name="password" />
+                <StyledError name="password" component="div" />
+              </SettingGridContent>
+              <StyledButton type="submit">Submit</StyledButton>
+            </StyledFlex>
+          </Form>
+        </Formik>
+      )}
+    </>
   );
 };
 

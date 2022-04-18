@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.4.3",
+    "@cypress/webpack-dev-server": "^1.8.4",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@testing-library/jest-dom": "^5.16.4",
@@ -16,6 +17,7 @@
     "@types/yup": "^0.29.13",
     "formik": "^2.2.9",
     "i": "^0.3.7",
+    "install": "^0.13.0",
     "npm": "^8.7.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -32,7 +34,7 @@
   "scripts": {
     "start": "craco start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "cypress open",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -55,6 +57,8 @@
   },
   "devDependencies": {
     "@types/uuid": "^8.3.4",
-    "craco-alias": "^3.0.1"
+    "chance": "^1.1.8",
+    "craco-alias": "^3.0.1",
+    "cypress": "^9.5.4"
   }
 }

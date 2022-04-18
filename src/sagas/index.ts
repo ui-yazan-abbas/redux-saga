@@ -5,6 +5,8 @@ import { Users } from "types/";
 const fetchUsers = () =>
   fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json());
 
+const logInAndOut = (state: boolean) => !state;
+
 function* workGetUsers() {
   const users: Users = yield saga.call(fetchUsers);
   yield saga.put({ type: ActionTypes.GET_USERS_SUCCESS, users });
@@ -22,10 +24,10 @@ function* workLogIn() {
 function* logInSaga() {
   yield saga.takeEvery(ActionTypes.LOG_IN, workLogIn);
 }
-function* rootSaga(){
-  yield saga.all([
-    crudSaga,
-    logInSaga
-  ])
-}
+
+const rootSaga = () =>
+  function* rootSaga() {
+    yield saga.all([crudSaga(), logInSaga()]);
+  };
+  
 export default rootSaga;

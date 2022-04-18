@@ -9,7 +9,7 @@ import rootSaga from "@sagas/index";
 
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
-sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga());
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
