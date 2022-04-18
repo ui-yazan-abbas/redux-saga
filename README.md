@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-small project using Redux-Saga, Formik, Yup-Validation, Cypress testing, Alias file importing
+small project using Redux-Saga, Formik, Yup-Validation, Cypress testing, Alias file importing and styled components
 
 ### `npm start`
 
