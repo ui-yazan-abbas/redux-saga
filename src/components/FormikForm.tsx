@@ -4,8 +4,9 @@ import * as Yup from "yup";
 import styled from "@emotion/styled";
 import { FormProps } from "types/";
 import { useDispatch, useSelector } from "react-redux";
-import { logIn } from "@store/action";
+import { getUsers, logIn } from "@store/action";
 import { selectIsLoggedIn } from "@store/selectors";
+import UsersList from "./UsersList";
 
 const StyledFlex = styled("div")`
   display: flex;
@@ -70,6 +71,7 @@ const FormikForm: FC = () => {
     (values: FormProps, { resetForm }: any) => {
       resetForm();
       dispatch(logIn());
+      dispatch(getUsers());
     },
     [dispatch]
   );
@@ -77,7 +79,7 @@ const FormikForm: FC = () => {
   return (
     <>
       {isLoggedIn ? (
-        <h2>You're Here</h2>
+        <UsersList />
       ) : (
         <Formik
           initialValues={initialValues}
