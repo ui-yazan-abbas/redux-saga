@@ -1,6 +1,6 @@
-import { ActionTypes } from "../store/types";
-import { Users } from "../types/";
+import { ActionTypes } from "@store/types";
 import * as saga from "redux-saga/effects";
+import { Users } from "types/";
 
 const fetchUsers = () =>
   fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json());

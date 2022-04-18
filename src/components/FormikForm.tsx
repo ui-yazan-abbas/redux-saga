@@ -2,10 +2,10 @@ import { FC, useCallback } from "react";
 import { Formik, Form, ErrorMessage, Field } from "formik";
 import * as Yup from "yup";
 import styled from "@emotion/styled";
-import { FormProps } from "../types";
+import { FormProps } from "types/";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers, logIn } from "../store/action";
-import { selectIsLoggedIn } from "../store/selectors";
+import { getUsers, logIn } from "@store/action";
+import { selectIsLoggedIn } from "@store/selectors";
 
 const StyledFlex = styled("div")`
   display: flex;

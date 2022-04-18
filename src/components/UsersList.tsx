@@ -1,9 +1,9 @@
-import { selectHasUsers, selectUsers } from "../store/selectors";
-import { User, Users } from "../types";
+import { selectHasUsers, selectUsers } from "@store/selectors";
+import { User, Users } from "types/";
 import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback } from "react";
-import { getUsers } from "../store/action";
+import { getUsers } from "@store/action";
 import { v4 as uuidv4 } from "uuid";
 import UserBox from "./UserBox";
 import styled from "@emotion/styled";

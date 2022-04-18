@@ -7,7 +7,7 @@
            "@utils/*" : ["./utils/*"],
            "@store/*" : ["./store/*"],
            "@types/*" : ["./types/*"],
-           "@sagas/*" : ["./sagas/*"],
+           "@sagas/*" : ["./sagas/*"]
          }
     }
 }
