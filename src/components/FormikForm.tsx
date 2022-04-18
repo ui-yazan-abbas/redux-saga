@@ -2,10 +2,10 @@ import { FC, useCallback } from "react";
 import { Formik, Form, ErrorMessage, Field } from "formik";
 import * as Yup from "yup";
 import styled from "@emotion/styled";
-import { FormProps } from "../types";
+import { FormProps } from "types/";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers, logIn } from "../store/action";
-import { selectIsLoggedIn } from "../store/selectors";
+import { logIn } from "@store/action";
+import { selectIsLoggedIn } from "@store/selectors";
 
 const StyledFlex = styled("div")`
   display: flex;
@@ -66,38 +66,42 @@ const FormikForm: FC = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  console.log("Logged In", isLoggedIn);
   const handleSubmit = useCallback(
     (values: FormProps, { resetForm }: any) => {
       resetForm();
       dispatch(logIn());
-      dispatch(getUsers());
     },
     [dispatch]
   );
 
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={handleSubmit}
-    >
-      <Form>
-        <StyledFlex>
-          <SettingGridContent>
-            <StyledLabel htmlFor="email"> Email: </StyledLabel>
-            <StyledField name="email" />
-            <StyledError name="email" component="div" />
-          </SettingGridContent>
-          <SettingGridContent>
-            <StyledLabel htmlFor="password"> Password: </StyledLabel>
-            <StyledField name="password" />
-            <StyledError name="password" component="div" />
-          </SettingGridContent>
-          <StyledButton type="submit">Submit</StyledButton>
-        </StyledFlex>
-      </Form>
-    </Formik>
+    <>
+      {isLoggedIn ? (
+        <h2>You're Here</h2>
+      ) : (
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          <Form>
+            <StyledFlex>
+              <SettingGridContent>
+                <StyledLabel htmlFor="email"> Email: </StyledLabel>
+                <StyledField name="email" />
+                <StyledError name="email" component="div" />
+              </SettingGridContent>
+              <SettingGridContent>
+                <StyledLabel htmlFor="password"> Password: </StyledLabel>
+                <StyledField name="password" />
+                <StyledError name="password" component="div" />
+              </SettingGridContent>
+              <StyledButton type="submit">Submit</StyledButton>
+            </StyledFlex>
+          </Form>
+        </Formik>
+      )}
+    </>
   );
 };
 

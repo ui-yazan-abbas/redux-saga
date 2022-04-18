@@ -3,7 +3,7 @@ import { ActionTypes } from "./types";
 
 const LoggedInReducer = (state = { loggedIn: false }, action: any) => {
   switch (action.type) {
-    case ActionTypes.LOG_IN:
+    case ActionTypes.LOG_IN_SUCCESS:
       return { ...state, loggedIn: action.loggedIn };
     default:
       return state;

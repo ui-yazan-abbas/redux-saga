@@ -1,4 +1,4 @@
-import { UserBoxProps } from "../types/";
+import { UserBoxProps } from "types/";
 import { FC } from "react";
 import styled from "@emotion/styled";
 
